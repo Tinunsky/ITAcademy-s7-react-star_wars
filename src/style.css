@@ -194,6 +194,46 @@ body button:hover {
   margin: auto;
 }
 
+.cardImage {
+  min-height: 350px;
+  border-top-right-radius: 17px;
+  border-top-left-radius: 17px;
+  border-bottom: 1px solid red;
+}
+
+.cardTitle {
+  background-color: #141518;
+  border-bottom-left-radius: 17px;
+  border-bottom-right-radius: 17px;
+  opacity: 0.9;
+  text-align: center;
+}
+
+.section-header {
+  border-top: 1px solid #ffee5888;
+  border-bottom: 1px solid #ffee5888;
+  font-size: 1.3em;
+  border: 1px solid #ffee58;
+  border-radius: 50px;
+}
+
+.starship-name {
+  font-size: 2em;
+  margin-bottom: 5px;
+  color: #ffee58;
+  padding: 5px;
+}
+
+.details-wrapper {
+  background: "#141518";
+  border-left: 1px solid red;
+  padding: 15px;
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+  opacity: 0.9;
+}
+
+
 @keyframes move-twink-back {
   0% {
     background-position: 0 0;
@@ -213,4 +253,3 @@ body button:hover {
     transform: rotateX(25deg) translateZ(-2500px);
   }
 }
-

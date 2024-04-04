@@ -18,28 +18,12 @@ export function PilotCard({ pilot }) {
       <div
         className="cardImage"
         style={{
-          minHeight: "350px",
           background: `url(https://starwars-visualguide.com/assets/img/characters/${getPilotId()}.jpg)`,
           backgroundSize: "cover",
           backgroundPosition: "center",
-          borderTopRightRadius: "17px",
-          borderTopLeftRadius: "17px",
-          borderBottom: "1px solid red",
         }}
       ></div>
-      <div
-        className="cardTitle"
-        style={{
-          backgroundColor: "#141518",
-          padding: "10px",
-          borderBottomLeftRadius: "17px",
-          borderBottomRightRadius: "17px",
-          opacity: "0.9",
-          textAlign: "center",
-        }}
-      >
-        {pilot?.name}
-      </div>
+      <div className="cardTitle" style={{padding: "10px",}}>{pilot?.name}</div>
     </div>
   );
 }
