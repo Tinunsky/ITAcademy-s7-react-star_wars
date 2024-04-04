@@ -10,12 +10,12 @@ type LoginContextType = {
 export const LoginContext = createContext<LoginContextType>({
   onLogin: () => {},
   onLogout: () => {},
-  isLogged: true,
+  isLogged: false,
   setIsLogged: () => {},
 });
 
 export const LoginProvider = ({ children }: { children: ReactNode }) => {
-  const [isLogged, setIsLogged] = useState(true);
+  const [isLogged, setIsLogged] = useState(false);
 
   function onLogin() {
     if (isLogged === false) {

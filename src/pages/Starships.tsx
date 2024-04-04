@@ -54,7 +54,7 @@ export function Starships() {
       <Header />
       <NavBar />
       <div className="p-5">
-        {starships.map((starship) => (
+        {starships.map((starship,i) => (
           <div
             key={crypto.randomUUID()}
             className="sm:w-2/3 w-full"

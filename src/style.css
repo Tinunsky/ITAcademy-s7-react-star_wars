@@ -47,6 +47,9 @@ body button:hover {
   font-size: 1.1em;
 }
 
+.logo-container {
+  padding: 20px;
+}
 
 .stars {
   background-image: url(http://www.script-tutorials.com/demos/360/images/stars.png);

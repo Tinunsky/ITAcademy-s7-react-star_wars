@@ -1,30 +1,40 @@
-# React + TypeScript + Vite
+## Project README
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### Introduction
+Welcome to the Star Wars Galaxy Explorer! This project is a React-based web application that allows users to explore various aspects of the Star Wars universe, including starships, pilots, and films.
 
-Currently, two official plugins are available:
+### Features
+- **Starships**: Browse through a collection of starships from the Star Wars universe.
+- **Pilots**: Explore information about pilots associated with each starship.
+- **Films**: Learn about the films in which the starships appeared.
+- **User Authentication**: Users can register, log in, and log out to access restricted content.
+- **Protected Routes**: Certain routes, such as the list of starships and starship details, are protected and accessible only to logged-in users.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Technologies Used
+- **React**: The project is built using React, a JavaScript library for building user interfaces.
+- **React Router**: Used for navigation within the application.
+- **Context API**: Utilized for managing global state, including user authentication and starship data.
+- **Tailwind CSS**: Used for styling and layout design.
+- **API Integration**: Data is fetched from the Star Wars API (SWAPI) and a JSON server for user authentication.
 
-## Expanding the ESLint configuration
+### Project Structure
+The project consists of several components and context providers:
+- **Components**: Includes Header, NavBar, LoginButton, PilotCard, FilmCard, CardsSection, and more.
+- **Context Providers**: `LoginContext` manages user authentication, while `StarshipContext` manages starship-related data.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+### Usage
+- Upon launching the application, users are greeted with a homepage featuring introductory text about the Star Wars universe.
+- Users can navigate between different sections using the navigation bar at the top.
+- Starships page allows users to view a list of starships and select individual starships to view their details.
+- Starship details page displays detailed information about a selected starship, including its pilots and films.
+- Users can log in or sign up using the Login/Register page. Authentication state is managed using the LoginContext.
+- Certain routes, such as the list of starships and starship details, are accessible only to logged-in users.
 
-- Configure the top-level `parserOptions` property like this:
+### Credits
+- This project utilizes data from the Star Wars API (SWAPI).
+- The design and layout are inspired by the Star Wars universe.
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+### Contact
+This project was completed by Khrystsina Kozak as part of IT Academy - React course. 
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+Thank you for using the Star Wars Galaxy Explorer! May the Force be with you!
