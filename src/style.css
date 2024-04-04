@@ -1,0 +1,213 @@
+@import url("https://fonts.googleapis.com/css2?family=Saira:ital,wght@0,100..900;1,100..900&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+body input {
+  display: block;
+  margin: 5px 0;
+  padding: 0px 5px;
+  border-radius: 5px;
+  color: black;
+}
+
+body button {
+  display: block;
+  margin: 5px 0;
+  padding: 5px 15px;
+  border-radius: 10px;
+  border: 1px solid #ffee58;
+}
+
+body button:hover {
+  background-color: #ffee58;
+  color: black;
+}
+
+:root {
+  font-family: Saira;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.87);
+}
+
+.starship-details-container div div {
+  padding: 10px;
+}
+
+.starship-details-container div div b {
+  opacity: 0.9;
+  font-size: 1.1em;
+}
+
+
+.stars {
+  background-image: url(http://www.script-tutorials.com/demos/360/images/stars.png);
+  background-color: #000;
+  background-position: top center;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  z-index: -1;
+}
+
+.twinkling {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: url(http://www.script-tutorials.com/demos/360/images/twinkling.png);
+  background-position: top center;
+  animation: move-twink-back 200s linear infinite;
+  z-index: -1;
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+}
+
+.logo-image {
+  max-width: 300px;
+  margin: 15px;
+}
+
+.navbar {
+  border-top: 0.5px solid #222;
+  border-bottom: 0.5px solid #222;
+  background: black;
+}
+
+.nav-links {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  padding: 20px;
+}
+
+.nav-links li {
+  margin: 0 20px;
+}
+
+.nav-link {
+  color: white;
+  font-size: 1.3em;
+  text-decoration: none;
+  transition: all 0.4s ease;
+  border: 1px solid transparent;
+  padding: 3px 19px;
+  border-radius: 17px;
+}
+
+.nav-link.active {
+  color: #ffee58;
+  border: 1px solid #ffee58;
+}
+
+.nav-link:hover {
+  color: #ffe600;
+}
+
+.chewbacca {
+  transform: rotate(45deg);
+  position: absolute;
+  left: -83px;
+  bottom: -60px;
+  z-index: 1;
+  max-width: 50%;
+}
+
+.home-wrapper {
+  display: flex;
+  overflow: hidden;
+}
+
+.text-wrapper {
+  flex: 1;
+  perspective: 400px;
+  justify-content: center;
+  display: flex;
+}
+
+.floating-text {
+  max-width: 430px;
+  text-align: justify;
+  color: #ffee58;
+  font-weight: bold;
+  animation: sw-text 100s linear infinite;
+  position: relative;
+  top: 400px;
+  transform-origin: 50% 100%;
+}
+
+.login-register-wrapper {
+  /* display: flex; */
+  justify-content: center;
+  align-items: center;
+  padding: 70px;
+}
+
+.login-form,
+.register-form {
+  /* width: 300px; */
+  height: 300px;
+  padding: 20px;
+  border: 1px solid #ffee58;
+  border-radius: 5px;
+}
+
+.login-form,
+.register-form {
+  margin: 20px 0px;
+}
+
+.login-form h2,
+.register-form h2 {
+  color: #ffee58;
+}
+
+.login-btn {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  transition: all 0.4s ease;
+}
+
+.login-btn:hover {
+  color: #ffe600;
+}
+
+.card {
+  width: auto;
+  min-width: 100px;
+  padding: 5px;
+  max-width: 500px;
+  margin: auto;
+}
+
+@keyframes move-twink-back {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: -10000px 5000px;
+  }
+}
+
+@keyframes sw-text {
+  0% {
+    top: 400px;
+    transform: rotateX(20deg) translateZ(200px);
+  }
+  100% {
+    top: -6000px;
+    transform: rotateX(25deg) translateZ(-2500px);
+  }
+}
+
