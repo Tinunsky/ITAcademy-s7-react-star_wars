@@ -1,10 +1,6 @@
-import { useContext } from "react";
-import { StarshipContext } from "../contexts/StarshipContext";
 
 export function PilotCard({ pilot }) {
-  const { pilots } = useContext(StarshipContext);
 
-  console.log("pilots", pilots);
 
   function getPilotId() {
     const apiUrl = pilot?.url;
@@ -28,4 +24,3 @@ export function PilotCard({ pilot }) {
   );
 }
 
-// https://starwars-visualguide.com/assets/img/characters/1.jpg

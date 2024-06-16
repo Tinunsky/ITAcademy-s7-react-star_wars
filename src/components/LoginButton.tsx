@@ -4,7 +4,7 @@ import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 
 export function LoginButton() {
-  const { isLogged, onLogout } = useContext(LoginContext);
+  const { isLogged, onLogout, userName } = useContext(LoginContext);
   const navigate = useNavigate();
 
   function handleLogout() {
@@ -14,11 +14,14 @@ export function LoginButton() {
 
 
   return (
-    <>
+    <div className="login-btn-wrapper">
       {isLogged && (
-        <a href="#" className="login-btn" onClick={handleLogout}>
-          LOG OUT
-        </a>
+        <>
+          <span style={{ opacity: '0.5', margin: "0 10px" }}>{userName}</span>
+          <a href="#" className="login-btn" onClick={handleLogout}>
+            LOG OUT
+          </a>
+        </>
       )}
 
       {!isLogged && (
@@ -26,7 +29,7 @@ export function LoginButton() {
           LOG IN // SIGN UP
         </NavLink>
       )}
-    </>
+      </div >
   );
 }
 

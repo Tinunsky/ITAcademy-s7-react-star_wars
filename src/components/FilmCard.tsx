@@ -1,10 +1,5 @@
-import { useContext } from "react";
-import { StarshipContext } from "../contexts/StarshipContext";
 
 export function FilmCard({ film }) {
-  const { films } = useContext(StarshipContext);
-
-  console.log("films", films);
 
   function getFilmId() {
     const apiUrl = film?.url;
@@ -39,4 +34,4 @@ export function FilmCard({ film }) {
   );
 }
 
-// https://starwars-visualguide.com/assets/img/films/4.jpg
+

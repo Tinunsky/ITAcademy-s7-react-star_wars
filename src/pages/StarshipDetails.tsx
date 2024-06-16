@@ -2,40 +2,40 @@ import { useContext, useEffect, useState } from "react";
 import { Header } from "../components/Header";
 import { NavBar } from "../components/NavBar";
 import { StarshipContext } from "../contexts/StarshipContext";
-import { useNavigate } from "react-router-dom";
 import { CardsSection } from "../components/CardsSection";
+import { useParams } from "react-router-dom";
+import { getStarshipId } from "../utils/getStarshipId";
 
 export function StarshipDetails() {
-  const { starships, indexStarship, getPilots, getFilms } =
+  const { getStarshipDetails, starshipDetails, setStarshipDetails } =
     useContext(StarshipContext);
   const [backgroundNoImageOpacity, setbackgroundNoImageOpacity] = useState(0);
-  const starship = starships?.[indexStarship];
-  const navigate = useNavigate();
-
-  function getStarshipId() {
-    const apiUrl = starship?.url;
-    const segments = apiUrl.split("/");
-    const id = segments[segments.length - 2];
-    return id;
-  }
+  const starship = starshipDetails
+  let { id } = useParams();
 
   useEffect(() => {
-    !starship && navigate("/starships");
-    getPilots();
-    getFilms();
-    setTimeout(() => {
-      setbackgroundNoImageOpacity(1);
-    }, 300);
+    getStarshipDetails(id);
+    return () => {
+      setStarshipDetails(undefined)
+    }
   }, []);
 
-  console.log("startships", starships);
+  useEffect(() => {
+    if (starshipDetails) {
+      setTimeout(() => {
+        setbackgroundNoImageOpacity(1);
+      }, 300);
+    }
+  }, [starshipDetails]);
+
+  console.log("starship!!!", starship);
 
   return (
     <>
+      <Header />
+      <NavBar />
       {starship && (
         <>
-          <Header />
-          <NavBar />
           <div className="p-5"></div>
           <div className="sm:w-3/4 w-full m-auto p-5">
             <div className="section-header p-4 mb-10">Starship</div>
@@ -56,7 +56,7 @@ export function StarshipDetails() {
                     width: "100%",
                     height: "100%",
                     minHeight: "300px",
-                    background: `url(https://starwars-visualguide.com/assets/img/starships/${getStarshipId()}.jpg)`,
+                    background: `url(https://starwars-visualguide.com/assets/img/starships/${getStarshipId(starship)}.jpg)`,
                     backgroundSize: "cover",
                     backgroundPosition: "center",
                   }}
