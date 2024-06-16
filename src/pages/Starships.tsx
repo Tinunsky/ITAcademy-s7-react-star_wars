@@ -3,12 +3,12 @@ import { Header } from "../components/Header";
 import { NavBar } from "../components/NavBar";
 import { useNavigate } from "react-router-dom";
 import { StarshipContext } from "../contexts/StarshipContext";
+import { getStarshipId } from "../utils/getStarshipId";
 
 export function Starships() {
   const navigate = useNavigate();
   const {
     starships,
-    indexStarship,
     setIndexStarship,
     getMoreStarships,
     nextPageUrl,
@@ -19,19 +19,20 @@ export function Starships() {
     getMoreStarships();
   }, []);
 
-  useEffect(() => {
-    function handleScroll() {
-      if (
-        window.innerHeight + document.documentElement.scrollTop ===
-        document.documentElement.offsetHeight
-      ) {
-        loadMoreStarships();
-      }
-    }
+  function handleScroll() {
+    if (
+      window.innerHeight + document.documentElement.scrollTop ===
+      document.documentElement.offsetHeight
 
-    window.addEventListener("scroll", handleScroll);
+    ) {
+      loadMoreStarships();
+    }
+  }
+  document.body.onscroll = handleScroll;
+
+  useEffect(() => {
     setLoading(false);
-    return () => window.removeEventListener("scroll", handleScroll);
+
   }, [starships]);
 
   function loadMoreStarships() {
@@ -42,19 +43,16 @@ export function Starships() {
   }
 
   function handleClick(indexStarship: number) {
-    navigate("/starship-details");
+    navigate(`/starship-details/${indexStarship}`);
     setIndexStarship(indexStarship);
   }
-
-  console.log("indexStarship", indexStarship);
-  console.log("starships", starships);
 
   return (
     <>
       <Header />
       <NavBar />
       <div className="p-5">
-        {starships.map((starship, i) => (
+        {starships.map((starship) => (
           <div
             key={crypto.randomUUID()}
             className="sm:w-2/3 w-full"
@@ -66,7 +64,7 @@ export function Starships() {
               borderRadius: "50px",
               cursor: "pointer",
             }}
-            onClick={() => handleClick(i)}
+            onClick={() => handleClick(getStarshipId(starship))}
           >
             <div
               style={{

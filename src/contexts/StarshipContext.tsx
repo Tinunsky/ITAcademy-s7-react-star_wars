@@ -5,12 +5,13 @@ type SetState<T> = React.Dispatch<React.SetStateAction<T>>;
 const defaultStarshipContext = {
   starships: [] as Starship[],
   indexStarship: 0,
-  setIndexStarship: (() => {}) as SetState<number>,
-  getMoreStarships: () => {},
+  setIndexStarship: (() => { }) as SetState<number>,
+  setStarshipDetails: (() => { }) as SetState<Starship>,
+  getMoreStarships: () => { },
+  getStarshipDetails: (() => { }) as (id: string) => void,
+  starshipDetails: undefined as Starship,
   nextPageUrl: "",
-  getPilots: () => {},
   pilots: [] as string[],
-  getFilms: () => {},
   films: [] as string[],
 };
 
@@ -34,6 +35,7 @@ type Starship = {
 export const StarshipProvider = ({ children }: { children: ReactNode }) => {
   const initialStarships: Starship[] = [];
   const [starships, setStarships] = useState(initialStarships);
+  const [starshipDetails, setStarshipDetails] = useState(undefined);
   const [indexStarship, setIndexStarship] = useState(undefined);
   const [nextPageUrl, setNextPageUrl] = useState(
     "https://swapi.dev/api/starships"
@@ -53,9 +55,22 @@ export const StarshipProvider = ({ children }: { children: ReactNode }) => {
     }
   }
 
-  function getPilots() {
+  function getStarshipDetails(id) {
+    if (id) {
+      fetch(`https://swapi.dev/api/starships/${id}`)
+        .then((response) => response.json())
+        .then((starship) => {
+          setStarshipDetails(starship);
+          getPilots(starship);
+          getFilms(starship);
+          console.log("startship results saved as setStarshipDetails", starship);
+        });
+    }
+  }
+
+  function getPilots(starship) {
     setPilots([]);
-    starships?.[indexStarship].pilots.forEach((pilotUrl) => {
+    starship.pilots.forEach((pilotUrl) => {
       fetch(pilotUrl)
         .then((response) => response.json())
         .then((pilotDetails) => {
@@ -65,9 +80,9 @@ export const StarshipProvider = ({ children }: { children: ReactNode }) => {
     });
   }
 
-  function getFilms() {
+  function getFilms(starship) {
     setFilms([]);
-    starships?.[indexStarship].films.forEach((filmUrl) => {
+    starship.films.forEach((filmUrl) => {
       fetch(filmUrl)
         .then((response) => response.json())
         .then((filmDetails) => {
@@ -84,9 +99,10 @@ export const StarshipProvider = ({ children }: { children: ReactNode }) => {
         indexStarship,
         setIndexStarship,
         getMoreStarships,
+        getStarshipDetails,
+        setStarshipDetails,
+        starshipDetails,
         nextPageUrl,
-        getPilots,
-        getFilms,
         pilots,
         films,
       }}

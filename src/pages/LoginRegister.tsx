@@ -32,7 +32,7 @@ export function LoginRegister() {
         console.log(response.status);
         setLoadingLogin(false);
         if (response.status === 200) {
-          onLogin();
+          onLogin(emailLogin);
           navigate("/starships");
         } 
         return response.json();
@@ -60,7 +60,7 @@ export function LoginRegister() {
           console.log(response.status);
           setLoadingRegister(false);
           if (response.status === 200) {
-            onLogin();
+            onLogin(emailRegistration);
             navigate("/starships");
           }
           return response.json();

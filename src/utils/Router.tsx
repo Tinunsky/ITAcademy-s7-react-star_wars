@@ -17,7 +17,7 @@ export function Router() {
         <Route path="/" element={<Home />} />
         <Route element={<ProtectedRoute isActive={isLogged} />}>
           <Route path="/starships" element={<Starships />} />
-          <Route path="/starship-details" element={<StarshipDetails />} />
+          <Route path="/starship-details/:id" element={<StarshipDetails />} />
         </Route>
         <Route path="/login-register" element={<LoginRegister />} />
       </Routes>
